@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Href Attribute Example</title>
+  </head>
+  <body>
+    <h1>Href Attribute Example</h1>
+
+    <ul id="courses">Course: </ul>
+
+    <script type="text/javascript">
+      var url = "http://localhost:5001"
+      // var url = "http://course-service"
+
+      fetch(url)
+      .then(respond => respond.json())
+      .then(data => {
+        var courses = data.courses;
+        var courseListContent = ""
+        courses.forEach(course => {
+          courseListContent += `<li>${course}</li>`
+        })
+
+        document.getElementById("courses").innerHTML = courseListContent;
+      })
+      .catch(err => console.log(err))
+    </script>
+  </body>
+</html>
